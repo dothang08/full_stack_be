@@ -1,27 +1,18 @@
-const express = require('express')
-const path = require("path")
 require('dotenv').config()
+const express = require('express')
+const configViewEngine = require("./config/viewEngine")
+
 
 const app = express()
 const port = process.env.PORT || 8888 //port == hardcode   .uat  .prod
 const hostname = process.env.HOST_NAME
+const webRoutes = require("./routes/web")
 
-// Config tempalte engine
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
-
-//Config static file
-app.use(express.static(path.join(__dirname, 'public')))
+//Config template engine
+configViewEngine(app)
 
 //Khai báo route
-app.get('/', (req, res) => {
-    res.send('Hello World! and Nodemon')
-})
-
-app.get('/test', (req, res) => {
-    // res.send('<h1>Do Thang 08</h1>')
-    res.render("sample.ejs")
-})
+app.use("/", webRoutes)
 
 
 
