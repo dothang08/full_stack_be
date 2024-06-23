@@ -1,4 +1,6 @@
 const getHomepage = (req, res) => {
+    //process data
+    //Call model
     res.send('Hello World! and Nodemon')
 }
 
