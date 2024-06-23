@@ -8,6 +8,10 @@ const app = express()
 const port = process.env.PORT || 8888 //port == hardcode   .uat  .prod
 const hostname = process.env.HOST_NAME
 
+//Config req.body
+app.use(express.json()) // for json
+app.use(express.urlencoded({ extended: true })) // for form data
+
 //Config template engine
 configViewEngine(app)
 
