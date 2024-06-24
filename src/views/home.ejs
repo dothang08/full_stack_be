@@ -14,33 +14,58 @@
     </div>
 
     <div class="table-container">
-        <%= JSON.stringify(listUsers) %>
-            <div class="title">List Users</div>
-            <table>
+        <div class="title">List Users</div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+
+            <!-- <% for (let i=0; i < listUsers.length; i++) { %>
                 <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Name</th>
-                    <th>City</th>
-                    <th>Actions</th>
-                </tr>
-                <tr>
-                    <td>Peter</td>
-                    <td>Griffin</td>
-                    <td>$100</td>
-                    <td>$100</td>
+                    <td>
+                        <%= listUsers[i].id %>>
+                    </td>
+                    <td>
+                        <%= listUsers[i].email %>>
+                    </td>
+                    <td>
+                        <%= listUsers[i].name %>>
+                    </td>
+                    <td>
+                        <%= listUsers[i].city %>>
+                    </td>
                     <td>
                         <button>Edit</button>
                         <button>Delete</button>
                     </td>
                 </tr>
+                <% } %> -->
+
+            <% listUsers.forEach(function(users) { %>
                 <tr>
-                    <td>Lois</td>
-                    <td>Griffin</td>
-                    <td>$150</td>
-                    <td>$100</td>
+                    <td>
+                        <%= users.id %>
+                    </td>
+                    <td>
+                        <%= users.email %>
+                    </td>
+                    <td>
+                        <%= users.name %>
+                    </td>
+                    <td>
+                        <%= users.city %>
+                    </td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
                 </tr>
-            </table>
+                <% }); %>
+        </table>
     </div>
 
 
