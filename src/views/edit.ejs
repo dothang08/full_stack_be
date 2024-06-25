@@ -10,28 +10,28 @@
 <body>
     <div class="topnav">
         <a href="/">Home</a>
-        <a href="/create" class="active">Create users</a>
-        <a href="/edit">Update Users</a>
+        <a href="/create">Create users</a>
+        <a href="/edit" class="active">Update Users</a>
     </div>
 
     <div class="form-add-new">
         <form action="/create-user" method="post">
             <fieldset>
-                <legend>Add new users</legend>
+                <legend>Update a users</legend>
 
                 <div class="input_group">
                     <label for="">Email: </label>
-                    <input type="text" name="email">
+                    <input type="text" name="email" value="<%= userEdit.email  %>">
                 </div>
 
                 <div class="input_group">
                     <label for="">Name: </label>
-                    <input type="text" name="myName">
+                    <input type="text" name="myName" value="<%= userEdit.name  %>">
                 </div>
 
                 <div class="input_group">
                     <label for="">City: </label>
-                    <input type="text" name="city">
+                    <input type="text" name="city" value="<%= userEdit.city  %>">
                 </div>
                 <div>
                     <button>Save</button>
