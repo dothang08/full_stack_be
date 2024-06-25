@@ -62,7 +62,10 @@
                     </td>
                     <td>
                         <a href="/edit/<%= users.id %>">Edit</a>
-                        <button>Delete</button>
+                        <form action="delete-user/<%= users.id %>" method="POST">
+                            <button>Delete</button>
+                        </form>
+
                     </td>
                 </tr>
                 <% }); %>

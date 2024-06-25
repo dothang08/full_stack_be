@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update users</title>
+    <title>Delete users</title>
     <link rel="stylesheet" href="/CSS/styles.css">
 </head>
 
@@ -15,9 +15,9 @@
     </div>
 
     <div class="form-add-new">
-        <form action="/update-user" method="post">
+        <form action="/delete-user" method="post">
             <fieldset>
-                <legend>Update a users</legend>
+                <legend>Delete a users</legend>
 
                 <div class="input_group d-none">
                     <label for="">ID: </label>
@@ -25,24 +25,13 @@
                 </div>
 
                 <div class="input_group">
-                    <label for="">Email: </label>
+                    <label for="">Bạn có chắc chắn xóa Email? </label>
                     <input type="text" name="email" value="<%= userEdit.email  %>">
                 </div>
-
-                <div class="input_group">
-                    <label for="">Name: </label>
-                    <input type="text" name="myName" value="<%= userEdit.name  %>">
-                </div>
-
-                <div class="input_group">
-                    <label for="">City: </label>
-                    <input type="text" name="city" value="<%= userEdit.city  %>">
-                </div>
-                <div>
-                    <button>Save</button>
-                </div>
-            </fieldset>
-        </form>
+                <button>Confirm</button>
+    </div>
+    </fieldset>
+    </form>
     </div>
 </body>
 
