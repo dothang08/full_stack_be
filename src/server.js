@@ -18,9 +18,16 @@ configViewEngine(app)
 //Khai báo route
 app.use("/", webRoutes)
 
-//Test connection
+    ; (async () => {
+        //test connention
+        try {
+            await connection();
+            app.listen(port, hostname, () => {
+                console.log(`Example app listening on port ${port}`)
+            })
 
+        } catch (error) {
+            console.log("ERROR Connect to do", error);
+        }
+    })() //self running Function
 
-app.listen(port, hostname, () => {
-    console.log(`Example app listening on port ${port}`)
-})
