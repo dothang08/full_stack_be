@@ -2,8 +2,11 @@ const connection = require("../config/database")
 const { getAllUsers, getUserByID, updateUserbyID,
     deleteUserByID } = require("../service/CRUDservice")
 
+const User = require("../models/users")
+
+// Thao tác với Database (DB) thì dùng: await async vì nó chạy bất đồng bộ
 const getHomepage = async (req, res) => {
-    let results = await getAllUsers()
+    let results = await User.find({}); // chờ model
     return res.render('home.ejs', { listUsers: results }) // x <- y lấy y gán cho x 
 }
 
@@ -17,31 +20,22 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
     const userID = req.params.id
-    let user = await getUserByID(userID)
+    // let user = await getUserByID(userID)
+    let user = await User.findById(userID).exec();
     res.render("edit.ejs", { userEdit: user }) // lấy y gán cho x  : x <- y
 
 }
 
-
+// Tham khảo từ: https://mongoosejs.com/docs/index.html
 const postCreateUser = async (req, res) => {
     let email = req.body.email
     let name = req.body.myName
     let city = req.body.city
-    // let{emai, name, city} = req.body
-    console.log("Email: ", email, "Name: ", name, "City: ", city, "UserID: ",);
-    // connection.query(
-    //     `INSERT INTO 
-    //     Users(email, name, city)
-    //     VALUES(?, ?, ?)`,
-    //     [email, name, city],
-    //     function (err, results) {
-    //         console.log(results);
-    //         res.send("Create user succeed! ")
-    //     }
-    // )
-    let [results, fields] = await connection.query(
-        `INSERT INTO Users(email, name, city) VALUES(?, ?, ?)`, [email, name, city],
-    )
+    await User.create({
+        email: email,
+        name: name,
+        city: city
+    }) // ODM
     res.send("Create user succeed! ")
 }
 
