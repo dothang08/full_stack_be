@@ -57,6 +57,7 @@ const postDeleteUser = async (req, res) => {
     res.render("delete.ejs", { userEdit: user })
 }
 
+// https://mongoosejs.com/docs/api/query.html#Query.prototype.deleteOne()
 const postRemoveUser = async (req, res) => {
     const id = req.body.userID
     await User.deleteOne({ _id: id });
