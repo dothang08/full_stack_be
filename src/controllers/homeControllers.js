@@ -39,14 +39,13 @@ const postCreateUser = async (req, res) => {
     res.send("Create user succeed! ")
 }
 
+// https://mongoosejs.com/docs/api/model.html#Model.updateOne()
 const postUpdateUser = async (req, res) => {
     let email = req.body.email
     let name = req.body.myName
     let city = req.body.city
     let userID = req.body.userID
-    // let{emai, name, city} = req.body
-    await updateUserbyID(email, city, name, userID)
-    // res.send("Updated user succeed! ")
+    await User.updateOne({ _id: userID }, { email: email, name: name, city: city });
     res.redirect("/")
 }
 
