@@ -10,7 +10,24 @@ const getUsersAPI = async (req, res) => {
         })
 
 }
+// Tham khảo từ: https://mongoosejs.com/docs/index.html
+const postCreateUserAPI = async (req, res) => {
+    let email = req.body.email
+    let name = req.body.myName
+    let city = req.body.city
+    let user = await User.create({
+        email: email,
+        name: name,
+        city: city
+    }) // ODM
+    return res.status(200).json(
+        {
+            errCode: 0,
+            data: user
+        })
+}
+
 
 module.exports = {
-    getUsersAPI
+    getUsersAPI, postCreateUserAPI
 }
