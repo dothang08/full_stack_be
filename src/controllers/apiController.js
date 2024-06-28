@@ -27,7 +27,21 @@ const postCreateUserAPI = async (req, res) => {
         })
 }
 
+// https://mongoosejs.com/docs/api/model.html#Model.updateOne()
+const putUpdateUserAPI = async (req, res) => {
+    let email = req.body.email
+    let name = req.body.myName
+    let city = req.body.city
+    let userID = req.body.userID
+    let user = await User.updateOne({ _id: userID }, { email: email, name: name, city: city });
+    return res.status(200).json(
+        {
+            errCode: 0,
+            data: user
+        })
+}
+
 
 module.exports = {
-    getUsersAPI, postCreateUserAPI
+    getUsersAPI, postCreateUserAPI, putUpdateUserAPI
 }
