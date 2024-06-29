@@ -8,7 +8,12 @@ const mongoose = require("mongoose")
 const app = express()
 const port = process.env.PORT || 8888 //port == hardcode   .uat  .prod
 const hostname = process.env.HOST_NAME
+const fileUpload = require('express-fileupload');
 
+
+// Config file upload
+// default options
+app.use(fileUpload());
 
 //Config req.body
 app.use(express.json()) // for json
