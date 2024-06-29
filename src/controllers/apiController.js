@@ -34,6 +34,7 @@ const putUpdateUserAPI = async (req, res) => {
     let city = req.body.city
     let userID = req.body.userID
     let user = await User.updateOne({ _id: userID }, { email: email, name: name, city: city });
+
     return res.status(200).json(
         {
             errCode: 0,
@@ -41,7 +42,18 @@ const putUpdateUserAPI = async (req, res) => {
         })
 }
 
+// https://mongoosejs.com/docs/api/query.html#Query.prototype.deleteOne()
+const deleteUserAPI = async (req, res) => {
+    const id = req.body.userID
+
+    let results = await User.deleteOne({ _id: id });
+    return res.status(200).json(
+        {
+            errCode: 0,
+            data: results
+        })
+}
 
 module.exports = {
-    getUsersAPI, postCreateUserAPI, putUpdateUserAPI
+    getUsersAPI, postCreateUserAPI, putUpdateUserAPI, deleteUserAPI
 }

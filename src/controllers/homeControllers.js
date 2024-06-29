@@ -49,6 +49,7 @@ const postUpdateUser = async (req, res) => {
     res.redirect("/")
 }
 
+
 const postDeleteUser = async (req, res) => {
     const userID = req.params.id
     // let user = await getUserByID(userID)
