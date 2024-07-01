@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
+const mongoose_delete = require('mongoose-delete');
 // Schema : Định dạng hình thù data (Shape data) Document
+
 const customerSchema = new mongoose.Schema(
     {
         name: {
@@ -14,6 +16,7 @@ const customerSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
+customerSchema.plugin(mongoose_delete);
 
 //Model: Lưu hình dạng vào db  Collection
 const customer = mongoose.model('Customer', customerSchema);
