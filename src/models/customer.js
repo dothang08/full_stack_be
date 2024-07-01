@@ -16,5 +16,5 @@ const customerSchema = new mongoose.Schema(
 );
 
 //Model: Lưu hình dạng vào db  Collection
-const Customer = mongoose.model('user', customerSchema);
-module.exports = Customer 
+const customer = mongoose.model('Customer', customerSchema);
+module.exports = customer 

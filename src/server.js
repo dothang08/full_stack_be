@@ -12,7 +12,6 @@ const fileUpload = require('express-fileupload');
 
 
 // Config file upload
-// default options
 app.use(fileUpload());
 
 //Config req.body
