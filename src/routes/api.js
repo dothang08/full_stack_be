@@ -5,7 +5,7 @@ const { getUsersAPI, postCreateUserAPI, putUpdateUserAPI, deleteUserAPI,
     postUploadSingleFileApi, postUploadMultipleFilesAPI, } = require("../controllers/apiController")
 
 const { postCreateCustomer, postCreateArrayCustomer
-    , getAllCustomers } = require("../controllers/customerControllers")
+    , getAllCustomers, putUpdateCustomers } = require("../controllers/customerControllers")
 
 routerAPI.get('/users', getUsersAPI)
 routerAPI.post('/users', postCreateUserAPI)
@@ -19,5 +19,6 @@ routerAPI.post('/customers', postCreateCustomer)
 routerAPI.post('/customers-many', postCreateArrayCustomer)
 
 routerAPI.get('/customers', getAllCustomers)
+routerAPI.put('/customers', putUpdateCustomers)
 
 module.exports = routerAPI //export defual 

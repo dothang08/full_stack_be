@@ -1,8 +1,10 @@
 const customer = require("../models/customer");
-const { createCustomerService, createArrayCustomerService, getAllCustomerService } = require("../service/customerService");
+const { createCustomerService, createArrayCustomerService, getAllCustomerService, putCustomersService } = require("../service/customerService");
 const { uploadSingleFile } = require("../service/fileservice")
 
 // {key: value, key1: value1}
+
+//Controller: lấy lại data
 
 //Thao tác với dữ liệu text dùng: req.body
 //Thao tác với dữ liệu file dùng: req.files
@@ -55,6 +57,7 @@ module.exports = {
             )
         }
     },
+
     getAllCustomers: async (req, res) => {
         let result = await getAllCustomerService()
         return res.status(200).json({
@@ -62,8 +65,19 @@ module.exports = {
             data: result
         }
         )
+    },
 
+    putUpdateCustomers: async (req, res) => {
+        let id = req.body.id
+        let name = req.body.myName
+        let email = req.body.email
+        let address = req.body.address
+        let result = await putCustomersService(id, name, email, address)
+        return res.status(200).json({
+            EC: 0,
+            data: result
+        }
+        )
     }
-
 
 }

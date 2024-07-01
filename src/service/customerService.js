@@ -19,6 +19,8 @@ const createCustomerService = async (customerData) => {
 
 }
 
+//Service: Đẩy tất cả phần xử lý sang Service
+
 const createArrayCustomerService = async (arr) => {
     try {
         let result = await customer.insertMany(arr)
@@ -39,6 +41,16 @@ const getAllCustomerService = async () => {
         return null
     }
 }
+
+const putCustomersService = async (id, name, email, address) => {
+    try {
+        let result = await customer.updateOne({ _id: id }, { name, email, address });
+        return result
+    } catch (error) {
+        console.log("CHECK ERROR: ", error);
+        return null
+    }
+}
 module.exports = {
-    createCustomerService, createArrayCustomerService, getAllCustomerService
+    createCustomerService, createArrayCustomerService, getAllCustomerService, putCustomersService
 }
